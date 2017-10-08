@@ -1,0 +1,88 @@
+% !TEX root = ../ms.tex
+We recall the definitions of a \emph{vector space} and of a \emph{(linear) functional} and of a \emph{norm} on a vector space.
+A \emph{normed space} is a vector space equipped with a norm.
+A \emph{Banach space} is a complete normed space over either $\mathbb{R}$ or $\mathbb{C}$.
+The letter $X$ will usually denote a normed space,
+and we write $B_X$ and $S_X$ for the unit ball and unit sphere of $X$ respectively.
+Let $X$ be a normed space over some field $k\in\{\mathbb{R},\mathbb{C}\}$
+and let $f:X\to k$ be a linear functional.
+We call $f$ bounded if
+\begin{equation}
+  \sup_{x\in B_X}|f(x)|<\infty.
+  \label{dualnorm}
+\end{equation}
+Note that $f$ is bounded if and only if it is continuous.
+The collection of all bounded linear maps $f$ is called the \emph{dual space} of $X$,
+and we write
+$$X^*:=\{f:X\to k:\text{$f$ is linear and continuous}\}.$$
+The left hand side of (\ref{dualnorm}) norms this vector space,
+and is straightforward to check that this space is a Banach space.
+
+
+Let $X$ and $Y$ be two normed spaces over $k\in\{\mathbb{R},\mathbb{C}\}$.
+Write $X\sim Y$ if they there exists a vector space isomorphism that is continuous
+and with a continuous inverse.
+Write $X\cong Y$ if they are isometrically isomorphic, meaning that the isomorphism preserves
+the norm.
+Finally write $\langle x,f\rangle$ for $f(x)$, so that
+$\langle\cdot,\cdot\rangle$ is a bilinear map from $X\times X^*$ to $k$.
+It is straightforward to check that $|\langle x,f\rangle|\leq ||x||_X||f||_{X^*}$.
+
+Now we state the Hahn-Banach theorem.
+Let $X$ be a real vector space.
+A functional $p:X\to \mathbb{R}$ is called
+\emph{positive homogeneous} if $p(tx)=tp(x)$ for any $t\geq 0$, $x\in X$,
+and \emph{subadditive} if $p(x+y)\leq p(x)+p(y)$ for any $x,y\in X$.
+The functional $p$ is called sublinear if it satisfies both these conditions.
+Norms, seminorms and linear functionals are examples of sublinear functionals.
+
+\begin{theorem}[Hahn-Banach]
+  Let $X$ be a real vector space and $p$ a sublinear functional.
+  Let $Y$ be a subspace of $X$ and $g$ a linear functional of $Y$
+  with $g\leq p$ on $Y$.
+  Then $g$ extends to a linear functional $f$ of $X$ with $f\leq p$.
+\end{theorem}
+
+For the proof, we recall Zorn's lemma (which is equivalent to the axiom of choice).
+Let $(P,\leq)$ be a partially ordered set.
+A subset $C\subset P$ is called a \emph{chain} if $\leq$ totally orders $C$.
+An element $x\in P$ is called \emph{maximal} if no element in $P$ is strictly larger than $x$
+(i.e., $x\leq y$ implies $y=x$).
+
+\begin{theorem}[Zorn's lemma]
+  If $P$ is a nonempty partially ordered set such that every chain has an upper bound,
+  then $P$ contains a maximal element.
+\end{theorem}
+
+\begin{proof}[Proof of the Hahn-Banach theorem]
+  Let $P$ be the set of pairs $(h,Z)$ such that $Y\subset Z\subset X$
+  and such that $h$ is a linear functional on $Z$ extending $g$ to $Z$ satisfying $h\leq p$ on $Z$.
+  The set $P$ is partially ordered by extension, and nonempty as it contains
+  the element $(g,Y)$.
+  For a chain $\{(h_i,Z_i)\}_{i\in I}$ it is easy to construct an upper bound,
+  one takes $Z=\cup_{i\in I}Z_i$ and for $h$ one takes
+  $h(x)=h_i(x)$, where $i$ is such that $x\in Z_i$ ($h$ is clearly independent of this choice).
+  By construction, $h$ is linear and satisfies $h\leq p$ on $Z$.
+  Thus, by Zorn's lemma, $P$ contains a maximal element, say $(h,Z)$.
+  To demonstrate that $Z=X$ we argue by contradiction.
+  Assume that there exists an element $x\in X\setminus Z$, and define $Z_x:=Z+\mathbb{R}x$.
+  Define $$h_\alpha:Z+\mathbb{R}x\to\mathbb{R},\,z+\lambda x\mapsto h(z)+\lambda\alpha.$$
+  To finish the proof it suffices to demonstrates that there exists an $\alpha\in\mathbb{R}$
+  such that $h_\alpha\leq p$ on $Z_x$.
+  Thus we need to find $\alpha$ such that for all $\lambda\neq0$ and for any $z$,
+  \begin{align*}
+    h_\alpha(z+\lambda x)&\leq  p(z+\lambda x)\\
+    h(z)+\lambda\alpha&\leq p(z+\lambda x)\\
+    \lambda\alpha&\leq p(z+\lambda x)-h(z)\\
+    \lambda\alpha&\leq p(\lambda z'+\lambda x)-h(\lambda z'),
+  \end{align*}
+  writing $z'=z/\lambda$ to obtain the last inequality.
+  Using positive homogeneity of $p$, we only need to look at $\lambda=\pm 1$.
+  So, to prove existence of $\alpha$, it suffices to show that
+  $$\sup_{z\in Z} h(z)-p(z-x) \leq \inf_{z\in Z} p(z+x)-h(z).$$
+  But
+  $$h(z_1)-p(z_1-x)\leq p(z_2+x)-h(z_2)$$
+  since
+  $$h(z_1)+h(z_2)=h(z_1+z_2)\leq p(z_1+z_2)\leq p(z_1-x)+p(z_2+x).$$
+  This finishes the proof of the Hahn-Banach theorem.
+\end{proof}
