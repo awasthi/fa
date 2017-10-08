@@ -1,0 +1,66 @@
+\documentclass[11pt]{article}
+% Mathematics
+  % Packages
+      \usepackage{amsmath, mathtools}
+      \usepackage{amssymb}
+      \usepackage{amsthm}
+  % Theorem styling
+    % Number within sections
+      \newcounter{number_within_section}
+      \numberwithin{number_within_section}{section}
+    % Theorem-style
+      \newtheorem{theorem}    [number_within_section]{Theorem}
+      \newtheorem{corollary}  [number_within_section]{Corollary}
+      \newtheorem{lemma}      [number_within_section]{Lemma}
+      \newtheorem{observation}[number_within_section]{Observation}
+      \newtheorem{conjecture} [number_within_section]{Conjecture}
+      \newtheorem{proposition}[number_within_section]{Proposition}
+    % Definition-style
+      \theoremstyle{definition}
+      \newtheorem{definition} [number_within_section]{Definition}
+      \newtheorem{example}    [number_within_section]{Example}
+  % Create \numberthis command to number part of multi-line align* displays
+      \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+% Spacing and typography
+	% A4 lengths
+    	\newlength{\pagewidth}
+    	\setlength{\pagewidth}{210mm}
+    	\newlength{\pageheight}
+    	\setlength{\pageheight}{297mm}
+
+	% Set page size and margins
+		% 0.15625 = 10/64
+  		\usepackage[a4paper,
+  			left=   0.15625 \pagewidth,
+  			right=  0.15625 \pagewidth,
+  			top=    0.15625 \pageheight,
+  			bottom= 0.15625 \pageheight
+  		]{geometry}
+
+
+% Section styling
+    	\usepackage{titlesec}
+    	\titleformat{\section}{\normalfont\scshape\large\filcenter}{Lecture \thesection, }{0pt}{}
+    	\titlespacing*{\section}{0em}{2em}{1em}
+
+% Times new roman
+      \usepackage{mathptmx}
+
+\begin{document}
+
+\section*{\LARGE Functional analysis}
+
+\leftskip=1.5cm\rightskip=1.5cm
+
+This course in functional analysis was lectured by Andr\'as Zs\'ak at the University of Cambridge during Michaelmas term 2017,
+and these notes have been produced by Piet Lammers.
+Please feel free to use these notes as you see fit, but do so at your own risk.
+
+\leftskip=0cm \rightskip=0cm
+
+
+\section{6 October 2017.}
+\input{lectures/1.tex}
+
+\end{document}
