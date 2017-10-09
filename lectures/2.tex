@@ -1,0 +1,114 @@
+% !TEX root = ../ms.tex
+\begin{theorem}[Hahn-Banach]\label{hb2}
+  Let $X$ be a vector space over $k\in\{\mathbb{R},\mathbb{C}\}$, $p$ a seminorm on $X$,
+  $Y\subset X$ a subspace, and $g$ a linear functional on $Y$ satisfying
+  $|g|\leq p$ on $Y$.
+  Then $g$ extends to a linear functional $f$ on $X$ that satisfies $|f|\leq p$ on $X$.
+\end{theorem}
+
+\begin{proof}
+Let us first look at the real case.
+Note that $g\leq |g|\leq p$ on $Y$,
+so that we may apply Theorem \ref{hb1} to extend $g$ to a linear functional $f$ on $X$ satisfying
+$f\leq p$. But then $-f\leq p$ as well, since $-f(x)=f(-x)\leq p(-x)=p(x)$.
+Hence $|f|\leq p$.
+
+Now the complex case.
+Think of $X$ as a real space and let $g_\mathbb{R}=\operatorname{Re}(g)$.
+Then $|g_\mathbb{R}|\leq |g|\leq p$ on $Y$.
+By the real case $g_\mathbb{R}$ extends to a $\mathbb{R}$-linear functional $f_\mathbb{R}$ of $X$ satisfying
+$|f_\mathbb{R}|\leq p$ on $X$.
+Define
+$f$ by $f(x)=f_\mathbb{R}(x)-if_\mathbb{R}(ix)$;
+it is straightforward to check that this is a $\mathbb{C}$-linear functional on $X$.
+Now $\operatorname{Re}(f)|_Y=f_{\mathbb{R}}|Y=g_{\mathbb{R}}$ so $f|_Y=g$ by uniqueness.
+We need to show that $|f|\leq p$.
+Pick $x\in X$ and pick $\lambda\in S^1\subset \mathbb{C}$ such that $|f(x)|=\lambda f(x)=f(\lambda x)$.
+Then $|f(x)|=f(\lambda x)=f_\mathbb{R}(\lambda x)\leq p(\lambda x)=p(x)$.
+\end{proof}
+
+If $X$ is a complex vector space then let $X_\mathbb{R}$ be $X$ as real vector space.
+We have just proved that if $X$ is a complex normed vector space,
+the map
+$$(X^*)_\mathbb{R}\to(X_\mathbb{R})^*,\,f\mapsto Re(f)$$
+is an isometric isomorphism.
+
+\begin{corollary}
+  Let $X$ be a normed space over $k\in\{\mathbb{R},\mathbb{C}\}$, $p$ a seminorm,
+  and $x_0\in X$. Then there exists a linear functional $f$ such that $f(x_0)=p(x_0)$
+  and $|f|\leq p$ on $X$.
+\end{corollary}
+(It is not clear to me what is the reason for including this corollary at this point)
+
+\begin{theorem}[Hahn-Banach]\label{hb4}
+  Let $X$ be a normed space over $k\in\{\mathbb{R},\mathbb{C}\}$.
+  Then
+  \begin{enumerate}
+    \item For any $Y\subset X$ and $g\in Y^*$, $g$ extends to a linear functional
+    on $X$ of equal operator norm,
+    \item For any $x_0\in X$, there exists a linear functional $f$ of $X$
+    of norm one that maps $x_0$ to $||x_0||$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  For Statement 1, apply Theorem \ref{hb2} with $p(x)=||g||\cdot ||x||$.
+  For Statement 2, apply Theorem \ref{hb2} with $p=||\cdot||$,
+  and set $g:kx_0\to k,\, \lambda x_0\mapsto \lambda ||x_0||$,
+  which is a linear functional of norm one (the case $x_0=0$ is trivial).
+\end{proof}
+
+The previous theorem may be viewed as a linear version of the Tietze extension theorem.
+We remark that $X^*$ separates points of $X$: if $x$ and $y$ are distinct points of $X$
+then there exists a bounded linear functional $f$ such that $f(x)\neq f(y)$.
+The linear functional $f$ in Statement 2 of Theorem \ref{hb4} is called a \emph{norming functional}
+ for $x_0$:
+for $g\in B_{X^*}$,
+$|\langle x_0,g\rangle|=|g(x_0)|\leq ||g||\cdot ||x_0||\leq ||x_0||$
+so $||x_0||=\max\{|\langle x_0,g\rangle|:g\in B_{X^*}\}$,
+and this maximum is achieved at $f$.
+If $||x_0||=1$ then
+the same linear functional is also called a \emph{support functional},
+because $\{f=1\}$ defines a plane tangent to the unit ball in $X$ at $x_0$.
+
+
+Let $X$ be a normed space. The \emph{bidual} or \emph{second dual}
+of $X$ is $X^{**}=(X^*)^*$.
+This is a Banach space with the operator norm.
+For $\phi\in X^{**}$, $||\phi||_{X^{**}}:=\sup\{|\langle f,\phi\rangle|:f\in B_{X^*}\}$.
+For $x\in X$ define $\hat x$ to be a linear functional on $X^*$ by $\hat x(f)=f(x)$.
+In bracket notation, $\langle f,\hat x\rangle=\langle x,f\rangle$.
+The map $\hat x$ is the evaluation map of functionals in $X^*$ at $x$.
+It is clear that $\hat x$ is a linear map. Furthermore
+$|\hat x(f)|=|f(x)|\leq ||f||\cdot ||x||$.
+So $\hat x\in X^{**}$ and $||\hat x||\leq ||x||$.
+In fact, from the existence of norming functionals (Theorem \ref{hb4}, Statement 2) it follows that
+$||\hat x||= ||x||$. This proves the following theorem.
+
+\begin{theorem}
+  The map $\hat \cdot: X\to X^{**}$
+  is an isometric ismorphism from $X$ to $\hat X\subset X^{**}$.
+\end{theorem}
+The map $\hat\cdot$ is called the \emph{canonical embedding}.
+Note that $\hat X$ is closed in $X^{**}$ if and only if $X$ is complete.
+Furthermore, the closure of $\hat X$ in $X^{**}$ is a Banach space,
+containing an isometric copy of $X$. We have thus implicitly proved that the space $X$
+has a completion.
+We say that $X$ is \emph{reflexive} if $\hat X=X^{**}$, i.e.,
+if the canonical embedding is surjective.
+Note that it is possible $X$ is not reflexive even if
+ $X$ and $X^{**}$ are isometrically isomorphic.
+Examples of reflexive spaces include $L^p$ spaces (with $1<p<\infty$),
+and examples of non-reflexive spaces include $c_0$, $l^1$ and $l^\infty$.
+
+
+
+
+
+
+
+
+
+
+
+%

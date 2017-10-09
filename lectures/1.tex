@@ -1,5 +1,5 @@
 % !TEX root = ../ms.tex
-We recall the definitions of a \emph{vector space} and of a \emph{(linear) functional} and of a \emph{norm} on a vector space.
+We recall the definitions of a \emph{vector space} and of a \emph{(linear) functional} and of a \emph{(semi)norm} on a vector space.
 A \emph{normed space} is a vector space equipped with a norm.
 A \emph{Banach space} is a complete normed space over either $\mathbb{R}$ or $\mathbb{C}$.
 The letter $X$ will usually denote a normed space,
@@ -36,7 +36,7 @@ and \emph{subadditive} if $p(x+y)\leq p(x)+p(y)$ for any $x,y\in X$.
 The functional $p$ is called sublinear if it satisfies both these conditions.
 Norms, seminorms and linear functionals are examples of sublinear functionals.
 
-\begin{theorem}[Hahn-Banach]
+\begin{theorem}[Hahn-Banach]\label{hb1}
   Let $X$ be a real vector space and $p$ a sublinear functional.
   Let $Y$ be a subspace of $X$ and $g$ a linear functional of $Y$
   with $g\leq p$ on $Y$.
@@ -49,10 +49,10 @@ A subset $C\subset P$ is called a \emph{chain} if $\leq$ totally orders $C$.
 An element $x\in P$ is called \emph{maximal} if no element in $P$ is strictly larger than $x$
 (i.e., $x\leq y$ implies $y=x$).
 
-\begin{theorem}[Zorn's lemma]
+\begin{theorem*}[Zorn's lemma]
   If $P$ is a nonempty partially ordered set such that every chain has an upper bound,
   then $P$ contains a maximal element.
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}[Proof of the Hahn-Banach theorem]
   Let $P$ be the set of pairs $(h,Z)$ such that $Y\subset Z\subset X$
