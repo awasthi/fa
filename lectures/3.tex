@@ -1,0 +1,130 @@
+% !TEX root = ../ms.tex
+If $X$ and $Y$ are normed spaces then we write $\mathcal{B}(X,Y)$ for the set of bounded
+linear operators from $X$ to $Y$. The operator norm norms this space:
+$$
+  ||T||=\sup\{||Tx||:x\in B_X\}
+       =\sup\{||y||:y\in T(B_X)\}
+       =\sup\{||y||:y\in T(D_X)\},
+$$
+where $D_X:=\{x\in X : ||x||<1\}$.
+If $Y$ is complete, then so is $\mathcal{B}(X,Y)$.
+For $T\in\mathcal{B}(X,Y)$, its \emph{dual operator} is
+$$T^*:Y^*\to X^*,\, T^*(g)=g\circ T.$$
+This is well-defined and
+$\langle x, T^* g\rangle = \langle Tx, g\rangle$.
+It is straightforward to deduce that the operator $T^*$ is linear and bounded (i.e., $T^*\in\mathcal{B}(Y^*,X^*) $).
+Moreover, $||T^*||=||T||$,
+since
+$$||T^*||
+=\sup_{g\in B_{Y^*}} ||T^*g||
+=\sup_{g\in B_{Y^*}}\sup_{x\in B_X}|\langle x,T^* g\rangle |
+=\sup_{x\in B_X}\sup_{g\in B_{Y^*}}|\langle T x,g\rangle |
+=\sup_{x\in B_X}||Tx||=||T||;$$
+the penultimate equality follows by Theorem 4(2).
+
+As an example, pick $1<p<\infty$, and define $R:l_p\to l_p$ to be the right shift operator.
+Then its dual $R^*:l_q\to l_q$ is the left shift operator, where $p$ and $q$ are H\"older conjugates.
+
+We now list some properties of the dual operator.
+\begin{enumerate}
+  \item The dual of $\operatorname{Id}_X$ is $\operatorname{Id}_{X^*}$,
+  \item The operation of taking the dual of an operator is linear,
+  \item For compositions of operators we have
+  $(S\circ T)^*=T^*\circ S^*$,
+  \item The map $\cdot^*:\mathcal{B}(X,Y)\to \mathcal{B}(Y^*,X^*),\,T\mapsto T^*$
+  is an isometric linear map, but it is not surjective in general.
+\end{enumerate}
+The first three properties are easy to check in the bracket notation.
+Now some remarks.
+\begin{enumerate}
+  \item If $X\sim Y$ then $X^*\sim Y^*$. For this, let $S\in \mathcal{B}(Y,X), T\in \mathcal{B}(X,Y)$
+  such that $ST = \operatorname{Id}_X$ and $TS=\operatorname{Id}_Y$,
+  then $T^*S^*=\operatorname{Id}_{X^*}$ and $S^*T^*=\operatorname{Id}_{Y^*}$.
+  \item If $T\in \mathcal{B}(X,Y)$, then (\ref{cd1}) commutes.
+  For this, one checks that $\hat {Tx}=T^{**}\hat x$ (in bracket notation).
+  \item If $X$ and $Y$ are Hilbert spaces and if we identify every element with its dual,
+  then the dual of an operator is its adjoint.
+\end{enumerate}
+
+\begin{equation}\label{cd1}
+\begin{tikzcd}
+X\arrow{r}{T}\arrow{d}{\hat\cdot} & Y \arrow{d}{\hat\cdot}\\
+X^{**} \arrow{r}{T^{**}}& Y^**
+\end{tikzcd}
+\end{equation}
+
+
+Let $X$ be a normed space,
+and $Y\in X$ a closed subspace.
+The \emph{quotient space} $X/Y=\{x+Y:x\in X\}$ is a normed space in the \emph{quotient norm}
+$||x+Y||=\inf\{||x+y||:y\in Y\}=\operatorname{Dist}(x,Y)$.
+The \emph{quotient map} $q:X\to X/Y$ is given by $q(x)=x+Y$.
+The map $q$ is linear, surjective, and the norm of $q$ is one except if $Y=X$.
+This last fact holds because clearly $||q||\leq 1$
+and also $q(D_X)=D_{X/Y}$.
+To see that this latter equality holds true,
+observe that
+$||x+Y||<1$ implies that there exists a $y\in Y$ such that
+$x+y<1$, so $x+y\in D_X$.
+Hence $q$ is an \emph{open map}
+(meaning that if $U\subset X$ is open then $q(U)$ is open).
+
+Suppose $T\in\mathcal{B}(X,Z)$ and $Y\subset \operatorname{Ker} T$, then there exists a unique map
+$\tilde T:X/Y\to Z$ such that
+  (\ref{cd2}) commutes.
+To see this,
+observe that $\tilde T$ must be defined by $\tilde T(q(x))=Tx$.
+This map is linear and bounded.
+To see that $\tilde T$ is bounded, observe that
+$\tilde T(D_{X/Y})=\tilde T q(D_X)=T(D_X)$, so that $||\tilde T||=||T||$.
+
+\begin{equation}\label{cd2}
+\begin{tikzcd}
+X\arrow{rr}{T}\arrow{rd}{q} && Z \\
+& X/Y\arrow[dashed]{ur}{\tilde T} &
+\end{tikzcd}
+\end{equation}
+
+
+\begin{theorem}
+Let $X$ be a normed space. If $X^*$ is separable, then so is $X$.
+\end{theorem}
+
+Remark: The converse is false, take for example $X=l_1$. Observe that all binary sequences
+are in the unit ball of $l_1^*$, and that there are overcountably many such sequences.
+
+\begin{proof}
+  Let $f_1,f_2,f_3,...$ be a dense sequence in $S_X^*$.
+  Then for all $n$, there exists an $x_n\in B_X$ such that $|f_n(x_n)|>\frac{1}{2}$.
+  Let $Y$ be the closure of $\operatorname{Span}\{x_n:n\in\mathbb{N}\}$.
+  Then we claim that $Y=X$ (this is sufficient).
+  Assume that the claim is false. Then $X/Y\neq \{0\}$, so there exists a $g\in S_{(X/Y)^*}$
+  (by Theorem 4(2)). Let $f=g\circ q$ ($q$ being the quotient map).
+  Then $||f||=1$ (since $f(D_X)=g(q(D_X))=g(D_{X/Y})$)
+  and $Y\subset \operatorname{Ker} f$.
+  For any small $\varepsilon>0$,
+   there exists an $n$ such that $||f-f_n||<\varepsilon$
+   (by density of $f_1,f_2,f_3,...$).
+But then
+$
+  |f_n(x_n)|>\frac{1}{2}$ (by choice of $x_n$),
+  $|(f-f_n)(x_n)|<\varepsilon$ (since $||x_n||\leq 1$)
+  and $f(x_n)=0$ (since $x_n\in Y\subset \operatorname{Ker} f$).
+This is a contradiction.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%
