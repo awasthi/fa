@@ -1,0 +1,178 @@
+% !TEX root = ../ms.tex
+
+Dual of $C(K)$.
+
+Here $K$ will denote a compact Hausdorff space.
+We will write
+\begin{align*}
+  C(K)&:=\{f:K\to\mathbb{C}:\text{$f$ is continuous}\},\\
+  C^\mathbb{R}(K)&:=\{f:K\to\mathbb{R}:\text{$f$ is continuous}\},\\
+  C^+(K)&:=\{f\in C(K):\text{$f\geq 0$ on $K$}\},\\
+  M(K)&:=\{\phi: C(K)\to\mathbb{C}:\text{$\phi$ is linear and continuous}\},\\
+  M^\mathbb{R}(K)&:=\{\phi\in M(K):\text{$\phi(f)\in \mathbb{R}$ if $f\in C^\mathbb{R}(K)$}\},\\
+  M^+(K)&:=\{\phi: C(K)\to\mathbb{C}:\text{$\phi(f)$ is linear and $\phi(f)\geq 0$ if $f\in C^+(K)$}\}.
+\end{align*}
+
+Remarks.
+\begin{enumerate}
+  \item $C(K)$ is a complex Banach space in the uniform norm $||f||_\infty=\sup_K |f|$.
+  \item $C^\mathbb{R}(K)$ is a real Banach space in the uniform norm $||f||_\infty=\sup_K |f|$.
+  \item $C^+(K)$ is a subset of $C^\mathbb{R}(K)$.
+  \item $M(K)=C(K)^*$ is a complex Banach space in the operator norm.
+  \item $M^\mathbb{R}(K)$ is a closed real-linear subspace of $M(K)$.
+  We shall soon show that  $M^\mathbb{R}(K)\sim = C^\mathbb{R}(K)^*$.
+  \item Elements in $M^+(K)$ are called \emph{positive linear functionals}.
+  We shall soon show that $M^+(K)\subset M(K)$.
+\end{enumerate}
+
+\begin{lemma}
+\begin{enumerate}
+  \item For $\phi\in M(K)$ there exist unique $\phi_1,\phi_2\in M^{\mathbb{R}}(K)$
+  such that $\phi = \phi_1+i\phi_2$.
+  \item The map $\phi\mapsto \phi|_{C^\mathbb{R}(K)}:M^\mathbb{R}\to C^\mathbb{R}(K)^*$
+  is an isometric, real-linear isomorphism.
+  \item $M^+(K)\subset M(K)$ and moreover,
+  $M^+(K)=\{\phi\in M(K):||\phi||=\phi(1_K)\}$.
+  \item For $\phi\in M^\mathbb{R}(K)$ there exist unique $\phi^+,\phi^-\in M^+(K)$
+  such that $\phi=\phi^+-\phi^-$ and $||\phi||=||\phi^+||+||\phi^-||$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  \begin{enumerate}
+    \item For $\phi\in M(K)$ define $\bar\phi(f)=\bar{\phi(\bar f)}$
+    for any $f\in C(K)$.
+    Then $\bar \phi\in M(K)$
+    and $\bar {\lambda \phi+\mu\psi}=\bar\lambda\bar\phi+\bar\mu\bar\psi$
+    and $\bar{\bar \phi}=\phi$.
+    Also,
+    $\phi=\bar\phi$ if and only if $\phi\in M^\mathbb{R}(K)$.
+
+    Uniqueness. Assume that $\phi=\phi_1+i\phi_2$ as in the statement.
+    Then $\bar\phi=\phi_1-i\phi_2$,
+    so $\phi_1=\frac{1}{2}(\phi+\bar\phi)$
+    and $\phi_2=\frac{1}{2i}(\phi-\bar\phi)$.
+    This also proves existence.
+
+    \item For $\phi\in M^\mathbb{R}(K)$, $\phi_1=\phi|_{C^\mathbb{R}(K)}\in C^\mathbb{R}(K)^*$
+    and $||\phi_1||\leq ||\phi||$.
+    Given $f\in C(K)$, choose $\lambda\in \mathbb{C}$, $|\lambda|=1$ such that
+    $|\phi(f)|=\lambda\phi(f)$.
+    Then
+    $$|\phi(f)|=\phi(\lambda f)=
+    \phi(\operatorname{Re}(\lambda f))+i\phi(\operatorname{Im}(\lambda f))
+    =\phi(\operatorname{Re}(\lambda f))=\phi_1(\operatorname{Re}(\lambda f))
+    \leq ||\phi_1|| \cdot ||\operatorname{Re} (\lambda f)||_\infty
+    \leq ||\phi_1|| \cdot ||f||_\infty.
+    $$
+    Hence $||\phi||\leq||\phi_1||$.
+    The map $\phi\mapsto \phi|_{C^\mathbb{R}(K)}$ is isometric.
+    We now check if it is onto.
+    Given $\psi\in C^\mathbb{R}(K)^*$,
+    let $\phi(f)=\psi(\operatorname{Re} f)+i\psi (\operatorname{Im}f)$.
+    Then $\phi\iun M(K)$ and $\phi|_{C^\mathbb{R}(K)}=\psi$.
+
+    \item Let $\phi\in M^+(K)$. Given $f\in C^\mathbb{R}(K)$,
+    we write $f=f_1-f_2$ with $f_1,f_2\in C^+(K)$.
+    Then $\phi(f)=\phi(f_1)-\phi(f_2)\in\mathbb{R}$.
+    Let $f\in C^\mathbb{R}(K)$ with $||f||_\infty\leq 1$.
+    Then $-1\leq f\leq 1$ on $K$.
+    So $-\phi(1_K)\leq \phi(f)\leq \phi(1_K)$
+    and $|\phi(f)|\leq \phi(1_K)$.
+    Hence we must have equality.
+
+    Now assume that $\phi\in M(K)$ and $||\phi||=\phi(1_K)$.
+    Without loss of generality, we assume that $\phi(1_K)=1$.
+    Given $f\in C^\mathbb{R}(K)$, let $\phi(f)=\alpha+i\beta$ for some real $\alpha$ and $\beta$.
+    We want that $\beta=0$.
+    For $t\in\mathbb{R}$, let $g_t=f+it1_K$.
+    Then $|\phi(g_t)|^2=|\alpha+i(\beta+t)|^2=\alpha^2+\beta^2+2\beta t+t^2\leq ||g_t||_\infty^2=||f||_\infty^2+t^2$.
+    But $2\beta t\leq ||f||_\infty^2-\alpha^2-\beta^2$ for all $t$, so $\beta=0$
+    and $\phi\in M^\mathbb{R}(K)$.
+
+    Given $f\in C^+(K)$, we need that $\phi(f)\geq 0$. Without loss of generality,
+    $0\leq f\leq 1_K$.
+    So $0\leq 1_K-f\leq 1_K$.
+    Hence $\phi(1_K-f)\leq |\phi(1_K-f)|\leq ||1_K-f||_\infty\leq 1$,
+    so $\phi(f)\geq 0$.
+
+    \item For $f\in C^+(K)$ define $\phi^+(f)=\sup\{\phi(g):0\leq g\leq f\}$.
+    Since $0\leq f$, if $g\leq f$ then $||g||_\infty\leq ||f||_\infty$,
+    it follows that $0\leq \phi^+(f)\leq ||\phi||\cdot ||f_||_\infty$.
+    For $t\in [0,\infty)$, $\phi^+(tf)=t\phi^+(f)$.
+    Given $f_1,f_2\in C^+(K)$, we claim that $\phi^+(f_1+f_2)=\phi^+(f_1) +\phi^+(f_2)$.
+    Given $0\leq g_1\leq f_1$ and $0\leq g_2\leq f_2$,
+    we have $g_1+g_2\leq f_1+f_2$,
+    so $\phi^+(f_1+f_2)\geq \phi (g_1+g_2)=\phi(g_1)+\phi(g_2)$.
+    Taking the supremum over $g_1$ and $g_2$,
+    we get
+    $\phi^+(f_1+f_2)\geq \phi^+(f_1)+\phi^+(f_2)$.
+    Given $0\leq g\leq f_1+f_2$,
+    let $g_1=g\wedge f_1$ and $g_2=g-g_1$.
+    Then $0\leq g_1\leq f_1$ and $0\leq g_2\leq f_2$.
+    So $\phi(g)=\phi(g_1)+\phi(g_2)\leq \phi^+(f_1)+\phi^+(f_2)$.
+    Taking the supremum over $g$ gives us that
+    $\phi^+(f_1+f_2)\leq \phi^+(f_1)+\phi^+(f_2)$.
+    Define $\phi^+$ on $C^\mathbb{R}(K):\phi^+(f)=\phi^+(f_1)-\phi^+(f_2)$
+    where $f=f_1-f_2$, $f_1,f_2\geq 0$.
+    This is well-defined and real-linear.
+    Define $\phi^+$ in $C(K)$
+    by $\phi^+(f)=\phi^+(\operatorname{Re} f)+i\phi^+(\operatorname{Im} f)$;
+    a complex-linear function.
+    By definition, $\phi^+\in M^+(K)$,
+    so by (3), $\phi^+\in M(K)$, $||\phi^+||=\phi^+(1_K)$.
+    Define $\phi^-=\phi^+-\phi$.
+    For $f\in C^+(K)$,
+    $0\leq f\leq f$,
+    so $\phi^+(f)\geq \phi(f)$, and therefore $\phi^-(f)\geq 0$.
+
+    So $\phi^-\in M^+(K)$ and $\phi=\phi^+-\phi^-$.
+    Hence $||\phi||\leq ||\phi^+||+||\phi^-||$.
+    Given $0\leq g\leq 1_K$,
+    $-1_K\leq 2g-1_K\leq 1_K$,
+    so $||2g-1_K||\leq 1$.
+    So $2\phi(g)-\phi(1_K)\leq ||\phi||$.
+    Taking the supremum over $g$:
+    $2\phi^+(1_K)-\phi(1_K)\leq ||\phi||$
+and
+    $||\phi^+||+||\phi^-|| =\text{ (by (3)) }\phi^+(1_K)+\phi^-(1_K)\leq ||\phi||$.
+
+    Uniqueness. Suppose that $\phi=\phi^+-\phi^-$
+    and $||\phi||=||\psi^+||+||\psi^-||$
+    for $\psi^+,\psi^-\in M^+(K)$.
+    For $0\leq g\leq f$, we have $\phi(g)\leq\psi^+(g)\leq \psi^+(f)$,
+    so $\phi^+(f)\leq \psi^+(f)$.
+     $\phi^-=\phi^+-\phi\leq \psi^+-\phi=\psi^-$.
+     Thus $\psi^+-\phi^+$ and $\psi^--\phi^-$ are in $M^+(K)$.
+     By (3), $||\psi^+-\phi^+||+||\psi^--\phi^-||=\psi^+(1_K)-\phi^+(1_K)+\psi^-(1_K)+\phi^-(1_K)=||\phi||-||\phi||=0$
+  \end{enumerate}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%

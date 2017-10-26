@@ -1,0 +1,158 @@
+% !TEX root = ../ms.tex
+
+
+%%
+Duals of $L_p$.
+
+Let $(\Omega,\mathcal{F},\mu)$ be a measure space
+and $L_p$ the corresponding $L_p$ space for $1\leq p\leq\infty$.
+
+Fix $1\leq p<\infty$ and pick $1<q\leq \infty$ such that they are H\"older conjugates.
+For $g\in L_q$ define $\phi_g:L_p\to k$ by $\phi_g(f)=\int_\Omega fgd\mu$.
+By H\"olders inquality, this linear functional is well defined and
+$\phi_g(f)\leq ||f||_p||g||_q$.
+Therefore it is continuous: $\phi_g\in L_p^*$
+and $||\phi_g||\leq ||g||_q$.
+Hence $\phi:L_q\to L_p^*$ is linear and bounded (since $||\phi||\leq 1$).
+
+\begin{theorem}
+Let $(\Omega,\mathcal{F},\mu)$ and $p$, $q$ and $\phi$ be as above.
+Then
+\begin{enumerate}
+  \item If $1<p<\inft$, then $\phi$ is an isometric isomorphism, i.e., $L_p^* \tilde = L_q$,
+  \item If $p=1$ and $\mu $ is $\sigma$-finite, then $\phi$ is an isometric isomorphism,
+  i.e., $L_1^* \tilde = L_\infty$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  We first prove that $\phi$ is isometric.
+  Fix $g\in L_q$.
+  Then we need that $||\phi_g||\geq ||g||_q$.
+  Let $\lambda:\Omega\to k$ measureable such that $|\lambda =1|$ almost everywhere
+  and such that $\lambda g=|g|$ almost everywhere.
+  In (1), let $f=\lambda |g|^{q-1}$.
+  Then $\int |f|^p=\int |g|^{pq-p}=\int |g|^q=||g||_q^q\leq \infty$.
+  Hence $f\in L_p$ and $||f||_p=||g||_q^{q/2}$.
+  Then $$||\phi_g||\cdot ||f||_p\geq |\phi_g(f)|=|\int f g | = \int |g|^q=||g||_q^q=||g||_q\cdot ||f||_p.$$
+  For (2), let us assume that $g\neq 0$, so that $||g||_\infty>0$.
+  Fix $0<s<||g||_\infty$.
+  Let $A=\{g>s\}\subset \Omega$, which has nonzero measure.
+  Since $\mu$ and hence $A$ are $\sigma$-finite,
+  we can pick a subset $B$ of $A$ of positive (in particular finite) measure.
+  Thus $\lambda 1_B\in L_1$.
+  Hence
+  $$||\phi_g||\cdot \mu(B)=||\phi_g||\cdot ||\lambda 1_B||_1\geq |\phi_g (\lambda 1_B)|=\int_B |g|\geq s\mu (B)$$
+  Since $\mu(B)>0$, $||\phi_g||\geq s$.
+  Hence $||\phi_g||\geq ||g||_\infty$.
+
+  Now we are going to prove that $\phi$ is surjective.
+  Fix $\psi\in L_p^*$.
+  So we are looking for a $g\in L_q$ such that $\phi_g$.
+  First, let $\mu$ be finite. For $f\in L_\infty$,
+  $$||f||_p=\left(\int_\Omega f^p\right)^{1/p}\leq \mu(\Omega)^{1/p}||f||_\infty<\infty.$$
+  Hence $L_\infty \subset L_p$. In particular, $1_A\in L_p$ for any measurable set $A$.
+  Define $\nu(A)=\psi(1_A)$ for such $A$.
+  If $A$ is measurable and $(A_n)_{n\geq 0}$ is a measurable partition,
+  then $\sum_{k=1}^n 1_{A_k}\to 1_A$ almost everywhere
+  and
+  $$1_A-\sum_{k=1}^n 1_{A_k}\leq 1_A\in L_1.$$
+  By dominated convergence, the partial sum converges to the indicator in $||\cdot ||_p$.
+  Since $\psi\in L_p^*$,
+  $\sum_{k=1}^n\nu (A_k)=\psi(\sum_{k=1}^n 1_{A_k})\to \psi(1_A)=\nu(A)$.
+  So $\nu$ is a complex measure absolutely continuous with respect to $\mu$;
+  if $\mu(A)>0$, then $1_A=0$ almost everywhere, so $\psi(1_A)=0$.
+  By Radon-Nikodym, there exists a $g\in L_1$ such that $\psi(1_A)=\int_A gd\mu$ for any measurable $A$.
+  By linearity,
+  $\psi(f)=\int fgd\mu$ for any simple function $f$.
+  The map $f\mapsto \int fgd\mu$ is a bounded linear map on $L_\infty$ (H\"older).
+  Given $f\in L_\infty$, there exists a sequence of simple functions converging to $f$ in $L_\infty$.
+  Hence we have $\psi(f)=\int fg d\mu$ for any $f\in L_\infty$.
+
+  Claim: $g\in L_1$ (note that this is sufficient since then $\psi, \phi_g\in L_p^*$, $\psi=\psi_g$ on $L_\infty$,
+  and $L_\infty$ is dense in $L_p$ with respect to $||\cdot ||_p$).
+
+  Proof of claim.
+  Fix $\lambda$ such that $\lambda g=|g|$ almost everywhere.
+  If $1<p<\infty$ let $A_n =\{ |g|\leq n\}\subset \Omega$.
+  Then $f_n=\lambda |g|^{q-1}1_{A_n}\in L_\infty$,
+  so that
+  $$\int f_n g=\int |g|^{1} 1_{A_n}=\psi(f_n)\leq ||\psi||\cdot ||f_n||_p =||\psi||\left(\int |g|^q 1_{A_n}\right)^{1/p}.$$
+  Hence $$\int |g|^q 1_A \leq ||\psi||^q.$$
+  By monotone convergence, $||g||_q<\infty$.
+
+  If $p=1$ and $q=\infty$.
+
+  Fix $s>||\psi ||$.
+  Let $A=\{|g|>s\}\subset \Omega$.
+  Let $f=\lambda 1_A$.
+  Then $$\int fg= \psi(f)\leq ||\psi|| \cdot ||f||_1\leq ||\psi||\mu(A)$$
+  and $s\mu(A)\leq \int_A|g|$,
+  hence $\mu(A)=0$.
+  Hence $||g||_\infty\leq ||\psi||<\infty$.
+
+  The rest of the proof is non-examinable.
+
+  For measurable $A$, let $\mathcal{F}_A$ be the set of measurable subsets of $A$,
+  and $\mu_A$ the restriction of $\mu$ to $(A,\mathcal{F}_A)$.
+  Then $L_p(\mu_A)$ is isometrically embedded in $L_p(\mu)$.
+  Let $\psi_A$ be the restriction of $\psi$ to $L_p(\mu_A)$.
+  If $A$ and $B$ are disjoint and measurable,
+  then
+  $$\psi_{A\cup B}=\begin{cases}
+  (||\psi_A||^q+||\psi_B||^q)^{1/q} &\text{ for $1<p<\infty$}\\
+  \max \{||\psi_A||,||\psi_B||\}& \text{ if $p=1$}
+  \end{cases}.$$
+  For $(a,b)\in\mathbb{R}^2$, $||(a,b)||_q=\sup\{ar+bt:||(r,t)||_p\leq 1\}$.
+
+  Case 2. $\mu$ is $\sigma$-finite.
+
+  Case 3. General $\mu$. ($1<p,q<\infty$).
+  $||\psi||=\lim |\psi(f_n)|$
+  $\{f_n\neq 0\}$ is $\sigma$-finite
+  so there exists a sigma finite $A$ such that $||\psi||=||\psi_A||$
+  and apply case $2$.
+  Then $g:A\to k$ set $g=0$ on the complement of $A$.
+  If $A$ and $B$ are disjoint then
+  $$||\psi_{A\cup B}||=(||\psi_A||^q+||\psi_B||^q)^{1/q}$$
+  and therefore $\psi_B=0$.
+\end{proof}
+
+\begin{corollary}
+  If $(\Omega,\mathcal{F},\mu)$ is a measure space and $1<p<\infty$
+  then $L_p(\mu)$ is reflexive.
+\end{corollary}
+
+\begin{proof}
+Let $q$ be the H\"older conjugate of $p$.
+Let $\phi: L_q\to L_p^*$
+and $\psi: L_p\to L_q^*$
+be as in the previous theorem.
+Then $\phi^*:L_p^{**}\to L_q^*$ is also an isometic ismorphism.
+We need to show that
+$$(\phi^*)^{-1}\psi(f)=\hat f$$
+for all $f$.
+Given $f\in L_p$, we need that $\psi(f)=\phi^*(\hat f)$. Given $g\in L_q$,
+$$\langle g,\phi^*(\hat f)\rangle =\langle \phi(g),\hat f\rangle =\langle f,\phi(g)\rangle =\int fg =\langle g,\psi (f)\rangle.$$
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%

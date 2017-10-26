@@ -1,0 +1,150 @@
+% !TEX root = ../ms.tex
+
+\begin{theorem}\label{linftyuniversal}
+  Every separable normed space is isometrically isomorphic to a subspace of $l_\infty$.
+\end{theorem}
+
+\begin{proof}
+  Let $X$ be separable and $(x_n)_{n\geq 0}$ a dense sequence in $X$.
+  Pick, for every $n$, an element $f_n\in S_{X^*}$ such that
+  $\langle x_n,f_n\rangle =1$ (Theorem 4(2)).
+  Define $T:X\to l_\infty$ by $Tx=(\langle x_n,f_n\rangle )_{n\geq 1}$.
+  It is well-define, since
+  $|\langle x,f_n\rangle|\leq ||x||\cdot||f_n||=||x||$.
+  So $T\in \mathcal{B}(X,l_\infty)$, since $||T||\leq 1$.
+  Also, $||Tx_n|| \geq |\langle x_n,f_n\rangle |=||x_n||.$
+  Hence $||Tx_n||=||x_n||$.
+  By density and continuity,
+  $||Tx||=||x||$ for any $x\in X$.
+\end{proof}
+
+Remarks.
+
+\begin{enumerate}
+  \item Theorem \ref{linftyuniversal} says that $l_\infty$ is isometrically universal for the class
+  $\mathcal{SB}$ of separable Banach spaces.
+  \item The dual version of Theorem \ref{linftyuniversal} says that every separable space is a
+  quotient of $l_1$.
+\end{enumerate}
+
+\begin{theorem}[vector valued Liouville theorem]
+Let $X$ be a complex Banach space and $f:\mathbb{C}\to X$ be analytic and bounded.
+Then $f$ is constant.
+\end{theorem}
+
+Remark. Be the statement ``$f$ is analytic'' we mean that it is differentiable at any point.
+
+\begin{proof}
+Fix $\phi\in X^*$. Then $\phi\circ f:\mathbb{C}\to\mathbb{C}$ is analytic and bounded.
+Hence, by the scalar Liouville theorem, $\phi\circ f$ is bounded.
+Therefore, $\phi(f(z))=\phi(f(0))$ for any $z\in\mathbb{C}$.
+Since $X^*$ separates points of $X$ (by Theorem 4(2)),
+$f(z)=f(0)$ for any $z\in\mathbb{C}$.
+\end{proof}
+
+A \emph{locally convex space}
+(LCS) is a pair $(X,\mathcal{P})$ where $X$ is a real or complex vector space,
+and $\mathcal{P}$ is a family of seminorms on $X$ that separates points of $X$ in the sense
+that for any nonzero element $x\in X$, there exists a seminorm $p\in\mathcal{P}$
+with $p(x)\neq 0$.
+Then $\mathcal{P}$ defines a topology on $X$ as follows.
+A subset $U\subset X$ is open if and only if for any $x\in U$, there exists an $\varepsilon>0$
+and an $n\in\mathbb{N}$ and some seminorms $p_1,...,p_n\in\mathcal{P}$
+such that
+$$x\in\{y\in X:\text{$p_k(y-x)<\varepsilon$ for all $1\leq k\leq n$}\}\subset U.$$
+
+Remarks.
+\begin{enumerate}
+  \item Vector addition and scalar multiplication are continuous.
+  \item The topology is Hausdorff since $\mathcal{P}$ separates the points of $X$.
+  \item $x_n\to x$ in $X$ if and only if $p(x_n-x)\to 0$ for all $p\in\mathcal{P}$.
+  \item Two families of seminorms $\mathcal{P},\mathcal{Q}$ are \emph{equivalent}
+  (write $\mathcal{P}\sim\mathcal{Q}$) if they give the same topology.
+  Note that $(X,\mathcal{P})$ is metrisable if and only if $\mathcal{P}$
+  is equivalent to a countable family of seminorms.
+\end{enumerate}
+
+A \emph{Fr\'echet space} is a complete metrisable LCS.
+
+Examples.
+
+\begin{enumerate}
+  \item Every normed space $(X,||\cdot ||)$ is a LCS, with $\mathcal{P}=\{||\cdot ||\}$.
+  \item Let $U\subset \mathbb{C}$ be nonempty and open.
+  Let $$\mathcal{O}(U)=\{f:U\to\mathbb{C}:\text{$f$ is analytic}\}.$$
+  For a compact $K\subset U$, let $p_K(f)=\sup_{z\in K}|f(z)|$,
+  and define $\mathcal{P}=\{p_K:\text{$K\subset U$ is compact}\}$.
+  Then $(\mathcal{O}(U),\mathcal{P})$ is a LCS. The topology is the topology of local
+  uniform convergence (an important topology in complex analysis).
+  It is also a Fr\'echet space.
+  However, the topology cannot be induced by a single norm - this is Montel's theorem.
+  \item Fix $d\in\mathbb{N}$ and some nonempty open set $\Omega\subset\mathbb{R}^d$.
+  For a \emph{multi-index} $\alpha\in(\mathbb{Z}_{\geq 0})^d$, we let
+  $D^\alpha=(\frac{\partial}{\partial x_1})^\alpha_1\cdot ...\cdot (\frac{\partial}{\partial x_d})^\alpha_d$.
+  For compact $K\subset\Omega$ and $f\in C^\infty(\Omega)$, define
+  the seminorm
+  $p_{K,\alpha}(f)=\sup\{|(D^\alpha f)(x)|:x\in K\}$.
+  Let $\mathcal{P}$ be the family of all such seminorms.
+  Then $(C^\infty(\Omega),\mathcal{P})$ is a Fr\'echet space but not normable.
+\end{enumerate}
+
+\begin{lemma}
+  Let $(X,\mathcal{P})$ and $(Y,\mathcal{Q})$ be a LCS and $T:X\to Y$ a linear map.
+  Then the following are equivalent:
+  \begin{enumerate}
+    \item $T$ is continuous,
+    \item $T$ is continuous at $0$,
+    \item For any $q\in\mathcal{Q}$, there exists a $C\geq 0$ and a $n\in\mathbb{N}$
+    and $p_1,...,p_n\in\mathcal{P}$ such that
+    $$q(Tx)\leq C\max\{p_k(x):1\leq k\leq n\}$$
+    for any $x\in X$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  The first two statements are equivalent since vector addition is continuous.
+  We now prove that (2) implies (3). For $q\in Q$, let $V=\{y\in Y:q(y)<1\}$.
+  Then $V$ is a neighbourhood of $0$ in $Y$. Since $T$ is continuous at $0$,
+  there exists a neighbourhood $U$ of $0$ in $X$ such that $T(U)\subset V$.
+  Without loss of generality, we may assume that
+  $U\subset \{x\in X:\text{$p_k(x)\leq \varepsilon$ for $1\leq k\leq n$} \}$
+  for some $\varepsilon>0,n\in\mathbb{N},p_1,...,p_n\in\mathcal{P}$.
+  Let $p$ be the maximum of $p_1,...,p_n$.
+  We claim that
+  $q(Tx)\leq \frac{1}{\varepsilon}p(x)$ for any $x$.
+  To see this, let $x\in X$.
+  If $p(x)\neq 0$ then $\frac{\varepsilon x}{p(x)}\in U$, so $T(\frac{\varepsilon x}{p(x)})\in V$, ie.,
+  $q(T(\frac{\varepsilon x}{p(x)}))\leq 1$, hence
+  $q(Tx)\leq \frac{1}{\varepsilon}p(x)$.
+  On the other hand, if $p(x)=0$, then $\lambda x\in U$ for any scalar $\lambda$,
+  so $T(\lambda x)\in V$ for all $\lambda$.
+  In turn $q(T(\lambda x))=|\lambda|q(Tx)<1$ for all $\lambda$,
+  Therefore $q(Tx)=0$.
+
+  We now prove that (3) implies (2).
+  Let $V$ be a neighbourhood of $0$ in $Y$. We look for a neighbourhood $U$ of $0$ in $X$
+  such that $T(U)\subset V$.
+  Without loss of generality,
+  let $V=\{y\in Y:\text{$q_k(y)<\varepsilon$ for $1\leq k\leq n$}\}$ for some
+  $\varepsilon>0,n\in\mathbb{N},q_1,...,q_n\in\mathcal{Q}$.
+  By (3), for each $k$, there exists a $C_k\geq 0$, $m_k\in\mathbb{N}$, $p_{k,1},...,p_{k,m_k}\in\mathcal{P}$
+  such that
+  $q_k(Tx)\leq C_k \max\{p_{k,j}(\lambda):1\leq j\leq m_l\}$.
+  Let
+  $U=\{x\in X:p_{k,j}<\varepsilon / C_k, 1\leq j\leq m_k, 1\leq k\leq n\}$
+  and therefore $T(U)\subset V$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+%

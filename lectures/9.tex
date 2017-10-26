@@ -1,0 +1,168 @@
+% !TEX root = ../ms.tex
+Aim is to descrive $M(K)=C(K)^*$
+and $M^\mathbb{R}(K)\sim = C^\mathbb{R}(K)^*$.
+Lemma 6 tells us that it is enough to consider
+$M^+(K)$.
+
+\emph{Topological preliminaries}
+
+\begin{enumerate}
+  \item As $K$ is compact and Hausdorff, it must also be normal. If $E,F\subset K$
+  are disjoint and closed, then there exist
+  disjoint open sets $U,V$ containing $E$ and $F$ respectively.
+  This is equivalent to the following:
+  If $E\subset U\subset K$ with $E$ closed and $U$ open,
+  then there exists an open set $V$ such that
+  $$E\subset V\subset \bar V\subset U$$
+  \item
+  Urysohn's Lemma.
+  If $E$ and $F$ are disjoint closed subsets of $K$,
+  then there exists a continuous function $f:K\to [0,1]$
+  such that $f=0$ on $E$ and $f=1$ on $F$.
+  \item Notation. $f\prec U$ means that $U$ is a open in $K$ and that $f:K\to[0,1]$
+  is a continuous function with its support contained in $U$.
+  $E\prec f$ means that $E$ is closed in $K$,
+  and that $f:K\to[0,1]$
+  is a continuous function with $E$ contained in $\{f=1\}$.
+  \item Urysohn's Lemma is equivalent to:
+  given $E\subset U\subset K$, $E$ closed, $U$ open,
+  there exists an $f$ such that
+  $E\prec f\prec U$.
+\end{enumerate}
+
+\begin{lemma}
+  Assume that $E\subset \cup_{i=1}^n U_i$,
+  where $E$ is closed, and the $U_i$ open. Then
+  \begin{enumerate}
+    \item there exist open $V_i$ such that $E\subset \cup_{i=1}^{n} V_i$
+  and $\bar V_i \subset U_i$
+  \item There exist $h_i\prec U_i$ such that $0\leq \sum_{i=1}^n h_i\leq 1$
+  on $K$ and such that $\sum_{i=1}^n h_i=1$ on $E$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  \begin{enumerate}
+    \item By induction on $n$.
+    The case $n=1$ is easy.
+    Now $n>1$. $E\setminus U_n\subset \cup_{i=1}^{n-1} U_i$. By induction there exist open sets $V_i$
+    such that $\bar V_i\subset U_i$ and $E\setminus U_n\subset \cup_{i=1}^{n-1}V_i$.
+    Then $E\setminus\cup_{i=1}^{n-1}V_i\subset U_n $.
+    Now apply the same as for $n=1$.
+    \item Apply $i$ to get open sets $V_i$.
+    By Urysohn's Lemma, there exist functions $g_i$ such that
+    $\bar V_i \prec g_i\prec U_i$.
+    Note that
+    $K\setminus \cup_{i=1}^n V_i \prec g_{n+1}\prec K\setminus E$.
+    Let $g=\sum_{i=1}^{n+1}$
+    and $h_i=g_i/g$ for $i\leq n$. Note that $g\geq 1$ on $K$.
+    So on $K$, $$0\leq \sum_{i=1}^n h_i\leq \sum_{i=1}^{n+1}g_i/g=1$$
+    and on $E$,
+    $g_{n+1}=0$ so that the $h_i$ sum to $1$.
+  \end{enumerate}
+\end{proof}
+
+
+Let $X$ be a topological space.
+Write $\mathcal{G}$ for the topology of $X$
+and write $\mathcal{B}$ for $\sigma(\mathcal{G})$.
+Members of $\mathcal{B}$ are called \emph{Borel sets}.
+A \emph{Borel measure} on $X$ is measure on $(X,\mathcal{B})$.
+A positive Borel measure $\mu$ on $X$ is \emph{regular} if
+\begin{enumerate}
+  \item $\mu(E)<\infty$ for any compact subset $E$ of $X$.
+  \item $\mu(A)=\inf \{\mu (U):A\subset U\in \mathcal{G}\}$.
+  \item $\mu(A)=\sup \{\mu (E):\text{$E\subset A$, $E$ is compact}\}$.
+\end{enumerate}
+A complex Borel measure $\nu$ on $X$ is \emph{regular}
+ if $|\nu| $ is regular.
+ If $X$ is compact and Hausdorff and $\mu$ a positive Borel measure on $X$ then the following
+ are equivalent:
+ \begin{enumerate}
+   \item $\mu$ is regular,
+   \item $\mu(X)<\infty$ and $\mu(A)=\inf \{\mu (U):A\subset U\in \mathcal{G}\}$,
+   \item $\mu(X)<\infty$ and $\mu(A)=\sup \{\mu (E):\text{$E\subset A$, $E$ is compact}\}$.
+ \end{enumerate}
+ Let $\Omega$ be a set, $\mathcal{F}$ a $\sigma$-algebra on $\Omega$, $\nu:\mathcal{F}\to\mathbb{C}$
+ a complex measure.
+ A measurable $f:\Omega\to\mathbb{C}$ is $\nu$-integrable if $\int_\Omega|f|d|\nu|<\infty$.
+ Define
+ $$\int_\Omega f\d\nu=\int_\Omega f d\nu_1-\int_\Omega f d\nu_2+i\int_\Omega f d\nu_3-i\int_\Omega f d\nu_4$$
+ where $\nu_i$ is the Jordan decomposition.
+
+ Recall that
+ $$\nu_i\leq |\nu|\leq \sum_i\nu_i$$
+ so $f$ is $\nu$-integrable if and only if $f$ is $\nu_i$-integrable for all $i$.
+
+ Properties
+\begin{enumerate}
+  \item $\int_\Omega 1_A d\nu=\nu(A)$
+  \item Linearity.
+  If $f$ and $g$ are $\nu$-integrable and $a,b\in \mathbb{C}$,
+  then $af+bg$ is $\nu$-\integrable and
+  $$\int(af+bg)d\nu=a\int fd\nu+b\int gd\nu.$$
+  \item Dominated convergence theorem.
+  If $f_n,f:\Omega\to \mathbb{C}$ are measurable,
+  $f_n\to f$ almost everywhere,
+  all dominated by $g\in L_1(|\nu|)$,
+  then $f_n$ and $f$ are $\nu$-integrable
+  and $\int f_nd\nu\to\int fd\nu$.
+  \item For $\nu$-integrable $f$, $|\int_\Omega f d\nu|\leq \int_\Omega |f|d|\nu|$.
+  This is true for all indicators, hence true for all simple functions, then use density and dominated convergence.
+\end{enumerate}
+
+Let $\nu$ be a complex Borel measure on $K$. For $f\in C(K)$,
+$\int_K |f|d|\nu|\leq ||f||_\infty |\nu|(K)<\infty$,
+so $f$ is $\nu$-integrable.
+
+Define $\phi:C(K)\to\mathbb{C}$, $\phi(f)=\int_K fd\nu$.
+Then $\phi\in M(K)$ and $||\phi||\leq ||\nu||_1$.
+If $\nu$ is a signed measure, then $\phi\in M^\mathbb{R}(K)$,
+and if $\nu$ is a positive measure, then $\phi\in M^+(K)$.
+
+\begin{theorem}[Riesz Representation Theorem]
+For $\phi\in M^+(K)$,
+there exists a unique positive Borel measure $\mu$ on $K$ that represents $\phi$:
+$$\phi(f)=\int_K fd\mu\ \ \ \ \ \ \ \ \ \ \ \ \text{ for any $f\in C(K)$}.$$
+\end{theorem}
+\begin{proof}
+  Uniqueness. Assume that $\mu_1$ and $\mu_2$ both represent $\phi$.
+  Fix $E\subset U\subset K$, $E$ closed and $U$ open.
+  By Urysohn's Lemma, there exists a function $f$
+  such that $E\prec f\prec U$.
+  Then
+  $$\mu_1(E)\leq \int fd\mu_1=\int_K fd\mu_2\leq \mu_2(U).$$
+  Taking the supremum over all $E$ closed and contained in $U$,
+  we get $\mu_1(U)\leq \mu_2(U)$.
+  Hence $\mu_1=\mu_2$ on $\mathcal{G}$ and hence (by regularity) on $\mathcal{B}$.
+
+  Existence. We define an outer measure $\mu^K$ on $K$ as follows.
+  For $U\in\mathcal{G}$ let $$\mu^*(U)=\sup\{\phi(f):f\prec U\}.$$
+  Note that $0\leq \mu^*(U)\leq ||\phi||$.
+  Also,
+  $\mu^*(K)=\text{(as $\phi$ is positive)}\phi(1_K)=\text{(by Lemma 6)}||\phi||$.
+  Also, if $U\subset V$ is open, then $\mu^*(U)\leq \mu^*(V)$.
+  For $A\subset K$, $\mu^*(A)=\inf\{\mu^*(U):A\subset U\in\mathcal{G}\}$.
+  This agrees with previous definition if $A\in\mathcal{G}$.
+
+  Not finished.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%

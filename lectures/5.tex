@@ -1,0 +1,139 @@
+% !TEX root = ../ms.tex
+The \emph{dual space} of a LCS $(X,\mathcal{P})$ over $k$ is
+$$X^*:\{f:X\to k:\text{$f$ is linear and continuous}\}.$$
+
+\begin{corollary}
+  Let $(X,\mathcal{P})$ be a LCS over $k$ and $f:X\to k$ a linear map.
+  Then $f\in X^*$ if and only if $\operatorname{Ker} f$ is closed.
+\end{corollary}
+
+\begin{proof}
+  The right implication is obvious (preimages of opens are open for continuous maps).
+  Now the left implication. If $f=0$ then we are done. Otherwise,
+  choose $x_0\in X\setminus \operatorname{Ker}f$. Since $\operatorname{Ker}f$ is closed,
+  there is a neighbourhood of $0$ such that $(x_0+U)$ is disjoint from  $\operatorname{Ker}f$.
+  Without loss of generality,
+  $U=\{x\in X:\text{$p_k(x\leq \varepsilon)$ for $1\leq k\leq n$}\}$
+  for some $(\varepsilon,n,p_1,...,p_n)$.
+  Note that $U$ is convex and \emph{balanced}
+  (balanced means that $\lambda x\in U$ for any $x\in U$ and $|\lambda|=1$).
+  Since $f$ is linear, $f(U)$ is also convex and balanced.
+  If $f(U)=k$
+  then $f(x_0+U)=f(x_0)+f(U)=k$,
+  a contradiction since $(x_0+U)$ is disjoint from $\operatorname{Ker}f$.
+  Otherwise, $f(U)$ is bounded.
+  As in the proof of Lemma 9, we get ....
+  By Lemma 9, $f$ is cts.
+\end{proof}
+
+\begin{theorem}[Hahn-Banach]
+  Let $(X,\mathcal{P})$ be a LCS.
+  Then
+  \begin{itemize}
+    \item For any $Y\subset X$, $g\in Y^*$, there is a $f\in X^*$ such that
+    $g$ is the restriction of $f$ to $Y$,
+    \item For any closed subspace $Y\subset X$, $x_0\in X\setminus Y$,
+    there exists a $f\in X^*$ such that $f(Y)=0$ and $f(x_0)\neq 0$.
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+\begin{itemize}
+  \item By Lemma 9, there exist $(C,n,p_1,...,p_n)$ such that
+  $|g(y)|\leq C\max p_k(y)$ for all $y\in Y$.
+  Set $p(x)=C\max p_k(x)$. Then $p$ is a seminorm on $X$.
+  By Theorem 2, the desired $f$ with $f\leq p$ exists.
+  \item Let $Z=\operatorname{Span}\{Y,x_0\}$, define $g:Z\to k$
+  by $g(y+\lambda x_0)=\lambda$.
+  Then $g$ is linear, $g(Y)=0$, and $g(x_0)=1\neq 0$.
+  Also, $\operatorname{Ker} g=Y$ which is closed, so by Corollary 10,
+  $g\in Z^*$.
+  By part 1 of this proof, $g$ extends to some $f\in X^*$.
+\end{itemize}
+\end{proof}
+
+So remark again that $X^*$ separates the points of $X$.
+
+
+
+
+
+%----------------------------
+
+{\LARGE 2. The dual spaces of $L_p(\mu)$ and $C(K)$}
+
+Recall that we write $(\Omega,\mathcal{F},\mu)$ for a measure space.
+For $1\leq p<\infty$, we define
+$$L_p(\Omega,\mathcal{F},\mu)=L_p(\mu)=\{f:\Omega\to k:\text{$f$ is measurable and $\int_\Omega |f|^pd\mu<\infty$}\}.$$
+This space is normed by the $L_p$-norm,
+for $f\in L_p(\mu)$ given by
+$$||f||_p:=\left(\int_\Omega |f|^pd\mu\right)^{\frac{1}{p}}.$$
+Then $(L_p(\mu),||\cdot ||_p)$ is a normed space provided that we identify functions that are equal almost everywhere.
+
+We also define
+$$L_\infty(\mu)=\{f:\Omega\to k:\text{$f$ is measurable and essentially bounded}\},$$
+with the $L_\infty$-norm given by
+$$||f||_{\infty}:=\operatorname{Ess Sup}|f|.$$
+Then again $(L_\infty(\mu),||\cdot ||_\infty)$ is a normed space provided that we identify functions that are equal almost everywhere.
+
+Remark. If $X$ is a real or complex vector space and $||\cdot ||$ a seminorm on $X$,
+then $N=p^{-1}(0)$ is a subspace of $X$ and $X/N$ is a normed subspace with the norm provided by
+$||x+N||=||x||$.
+We will not do this for $L_p(\mu)$.
+
+\begin{theorem}
+The space $L_p(\mu)$ is complete for $1\leq p\leq \infty$.
+\end{theorem}
+
+\begin{proof}
+First, consider $p\leq \infty$.
+Let $f_n$ be a sequence in $L_p(\mu)$ such that $\sum ||f_n||_p<\infty$.
+Let $g_n=\sum_{k=1}^n f_k$
+and $s_n=\sum_{k=1}^n |f_k|$
+and $s=\lim_{n}s_n$ (which takes values in $[0,\infty]$).
+Let $M=\sum_{n=1}^\infty||f_n||_p$.
+Let $A=\{\omega\in\Omega:s(\omega)=\infty\}$.
+By the triangular inequality,
+$$||s_n||_p\leq \sum_{k=1}^n||f_k||_M\leq M$$
+for all $n$, so $\int s_n^p\leq M^p$for all $n$.
+Since $s_n$ is increasing and this bound is uniform over $n$, we must have $\mu(A)=0$.
+Therefore define
+$f(\omega)=\sum_{k=1}^\infty f_k(\omega)$ for $\omega \not\in A$,
+and $f=0$ on $A$.
+Now show that $g_n\to f$ in $L_p$-norm.
+
+Now the case $p=\infty$; assume that $f_n$ is Cauchy in $L_\infty(\mu)$.
+For every $i$ choose a null-set $N_i$ such that
+$$||f_i||_\infty=\sup_{\Omega\setminus N_i}|f_i|$$
+and for every pair $(i,j)$ choose a null-set $N_{i,j}$ such that
+$$||f_i-f_j||_\infty=\sup_{\Omega\setminus N_{i,j}}|f_i-f_j|.$$
+Define $N$ to be the union of all those sets $N_i$ and $N_{i,j}$,
+which is again a null-set.
+Then the restrictions of $f_n$ to $\Omega\setminus N$
+is a uniformly converging Cauchy sequence of bounded functions,
+hence converges uniformly on $\Omega\setminus N$ to some $f$.
+Extend $f$ to $\Omega$ by setting $f=0$ on $N$.
+\end{proof}
+
+Let $\Omega$ be a set $\mathcal{F}$ a $\sigma$-algebra on $\Omega$.
+A \emph{complex measure} on $\mathcal{F}$
+is a countably additive set function
+$\nu:\mathcal{F}\to\mathbb{C}$.
+The \emph{total variation measure} of $\nu$ is $|\nu|:\mathcal{F}\to [0,\infty]$
+$$|\nu|(A)=\sup\left\{\sum_{k=1}^n |\nu(A_k)|:\text{$\{A_1,...,A_n\}$ is a measurable partition of $A$}\right\}.$$
+The measure $|\nu|$ is a positive measure.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  %

@@ -1,0 +1,133 @@
+% !TEX root = ../ms.tex
+
+As in last lecture, let $\nu$ be a complex measure.
+Recall that $|\nu|$ is a positive measure that satisfies
+$$|\nu(A)|\leq |\nu|(A)$$
+for any measurable $A$, and that $|\nu|$ is the smallest measure satisfying that inequality.
+If $A_n$ is an increasing sequence of measurable sets then
+$\nu(\cup_n A_n)=\lim_{n\to\infty}\nu(A_n)$
+and if $A_n$ is a decreasing sequence of measurable sets then
+$\nu(\cap_n A_n)=\lim_{n\to\infty}\nu(A_n)$.
+A \emph{signed measure} on $\mathcal{F}$ is a countably additive set function
+$\nu:\mathcal{F}\to\mathbb{R}$ (i.e., it is a complex measure that takes real values on all measurable sets).
+
+\begin{theorem}\label{decomp}
+  Let $(\Omega,\mathcal{F})$ be a measurable space and $\nu$ a signed measure.
+  Then there exists a measurable partition $\Omega=P\cup N$ such that
+  $\nu$ takes nonnegative values on measurable subsets of $P$ and nonpositive values on
+  measurable subsets of $N$.
+\end{theorem}
+
+Remarks.
+\begin{enumerate}
+  \item The partition from the previous theorem is called the \emph{Hahn decomposition of $\nu$}.
+  \item Define $\nu^+(A):=\nu(A\cap P)$ and $\nu^-(A):=-\nu(A\cap N)$ for any measurable $A$.
+  Then $\nu^+$ and $\nu^-$ are finite positive measures and $\nu=\nu^+-\nu^-$,
+  and $|\nu|=\nu^++\nu^-$.
+  Moreover, these two properties uniquely determine $\nu^+$ and $\nu^-$
+  (since $\nu^+=\frac{1}{2}(\nu+|\nu|)$ and $\nu^-=\frac{1}{2}(|\nu|-\nu)$).
+  This is called the \emph{Jordan decomposition} of $\nu$.
+  \item If $\nu$ is a complex measure, then $\operatorname{Re}(\nu)$ and $\operatorname{Im}(\nu)$
+  are signed measures, having Jordan decompositions $\nu_1-\nu_2$ and $\nu_3-\nu_4$ respectively.
+  Then $\nu=\nu_1-\nu_2+i\nu_3-i\nu_4$ is called the \emph{Jordan decomposition} of the complex measure $\nu$.
+  Moreover, $\nu_k\leq |\nu|$ for any $k$,
+  and $|\nu|\leq \nu_1+\nu_2+\nu_3+\nu_4$,
+  so $|\nu|$ must be finite.
+  \item In Remark 2, $\nu^+(A)=\sup\{\nu(B):B\subset A,B\in\mathcal{F}\}$.
+  Then $\nu(B)=\nu^+(B)-\nu^-(B)\leq \nu^+(B)\leq \nu^+(A)$.
+  Thus $B=P\cap A$ and $\nu(B)=\nu^+(A)$.
+\end{enumerate}
+
+\begin{proof}[Proof of Theorem \ref{decomp} (non-examinable)]
+Define $\nu^+(A)=\sup\{\nu(B):B\subset A,B\in\mathcal{F}\}$.
+
+Since $\varnothing\subset A$, we have $\nu^+:\mathcal{F}\to[0,\infty]$
+
+and if $A$ and $B$ are disjoint then $\nu^+(A\cup B)=\nu^+(A)+\nu^+(B)$.
+\begin{enumerate}
+  \item Claim: $\nu^+(\Omega)<\infty$.
+  Assume $\nu^+(\Omega)=\infty$. Then there exists a set $A_1\subset \Omega$ such that $\nu(A_1)>1$.
+  Then $\nu^+(\Omega)=\nu^+(A_1)+\nu^+(\Omega\setminus A_1)=\infty$.
+  One of these two sets must have $\nu^+$-measure $\infty$, say $B_1$.
+  Then from $B_1$ select a subset $A_2$ having $\nu$-measure at least $2$.
+  Let $B_2$ equal $A_2$ or $B_1\setminus A_2$, whichever has $\nu^+$-measure $\infty$.
+  Continuing like this, we get a decreasing sequence of sets $B_n$
+  such that $\nu^+(B_n)=\infty$ for all $N$
+  and $A_n\subset B_{n-1}$ and $\nu(A_n)>n$.
+  Then either there exist infinitely many indices $k_n$ such that $B_{k_n}=B_{k_n-1}\setminus A_{k_n}$,
+  so that the $A_{k_n}$ are pairwise disjoint,
+  a contradiction since it implies $\nu(\cup_n A_{k_n})=\infty$.
+  Otherwise, the $A_n$ form, for $n>N$ for some $N$,
+  a decreasing sequence of sets.
+  Hence $\nu(\cap_{n\geq N}A_n)=\lim_{n} \nu(A_n)=\infty$,
+  a contradiction.
+  \item Claim: there exists a $P\subset\Omega$ such that $\nu^+(\Omega)=\nu(P)$.
+  If $\nu(B)>\nu^+(\Omega)-\varepsilon$,
+  and $\nu(C)>\nu^+(\Omega)-\delta$
+\end{enumerate}
+\end{proof}
+
+Let $(\Omega,\mathcal{F},\mu)$ be a measure space. Let $\nu$ be a complex measure on the same measurable space.
+We say that $\nu$ is \emph{absolutely continuous} with respect to $\mu$ if for any measurable set $A$,
+we have $\mu(A)=0$ implies that $\nu(A)=0$.
+We write $\nu<<\mu$.
+
+Remarks.
+\begin{enumerate}
+  \item If $\nu<<\mu$ then $|\nu|<<\mu$.
+  If $\nu=\nu_1-\nu_2+i\nu_3-i\nu_4$ is the Jordan decomposition of $\nu$,
+  then $\nu_k<<\mu$ for all $k$.
+  \item We have $\nu<<\mu$ if and only if for all
+  for all $\varepsilon>0$, there exists a $\delta>0$,
+  such that for any measurable set $A$, $\mu(A)<\delta$ implies $|\nu(A)|<\varepsilon$.
+\end{enumerate}
+
+Example. If $f\in L_1(\mu)$, and $\nu(A):=\int_A fd\mu$, then $\nu$ is a complex measure that is
+absolutely continuous with respect to $\mu$.
+
+Let $(\Omega, \mathcal{F},\mu)$ be a measure space. Say a measurable set $A$ is $\sigma$-finite
+if there exists a measurable increasing sequence $A_n$ such that $A=\cup_n A_n$ and $\mu(A_n)<\infty$
+for all $n$.
+Say $\mu$ is $\sigma$-finite if $\Omega$ is $\sigma$-finite.
+
+\begin{theorem}[Radon-Nikodym] Let $(\Omega, \mathcal{F},\mu)$ be a $\sigma$-finite measure space,
+  $\nu$ a complex measure on the same measurable space, absolutely continuous with respect to $\mu$.
+  Then there exists a unique $f\in L_1(\mu)$ such that
+  $\nu (A)=\int_A fd\mu$.
+\end{theorem}
+
+\begin{proof}[Proof (non-examinable)]
+Uniqueness is obvious, so we will focus on existence.
+Without loss of generality, $\nu$ is a finite positive measure,
+and $\mu$ is finite.
+Define $$\mathcal{H}=\{f:\Omega\to [0,\infty):\forall A,\,\int_A fd\mu \leq \nu(A) \}.$$
+Then $0\in\mathcal{H}$.
+Define $$\alpha=\sup_{f\in\mathcal{H}}\int_\Omega f d\mu \leq \nu(\Omega).$$
+Now pick an increasing sequence $f_n$ in $\mathcal{H}$
+such that $\int_\Omega f_n d\mu > \alpha-\frac{1}{n}$.
+Then $g_n=f_1\wedge $
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%
